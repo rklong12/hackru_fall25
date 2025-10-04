@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Marta Fairpenny",
+    "background": "Veteran stallkeeper who trades grain measures and knows every guild price by heart.",
+    "personality": "Brisk, fair-minded, hates haggling games.",
+    "currentLocation": "sb-market-square"
+  },
+  {
+    "name": "Jory the Crier",
+    "background": "Town crier licensed to read the Bridge Charter at noon and post guild notices.",
+    "personality": "Sonorous, theatrical, surprisingly kind to shy petitioners.",
+    "currentLocation": "sb-market-square"
+  },
+  {
+    "name": "Bram Ironwright",
+    "background": "Itinerant smith demonstrating rivet tools and selling bridge-safe wheel shoes.",
+    "personality": "Blunt, practical, soft spot for apprentices.",
+    "currentLocation": "sb-market-square"
+  },
+
+  {
+    "name": "Nella Brewster",
+    "background": "Proprietor of the River Lantern, keeps a quiet ledger of tabs and rumors.",
+    "personality": "Warm, watchful, patient until crossed.",
+    "currentLocation": "sb-river-lantern"
+  },
+  {
+    "name": "Torren Half-Sail",
+    "background": "Riverboat hand between runs, swaps ferry gossip for hot stew.",
+    "personality": "Rollicking, superstitious, hates still water.",
+    "currentLocation": "sb-river-lantern"
+  },
+  {
+    "name": "Sera Quickstep",
+    "background": "Streetwise guide who sells safe routes after dark and the odd pilfered tip.",
+    "personality": "Clever, cheeky, loyal to those who tip well.",
+    "currentLocation": "sb-river-lantern"
+  },
+
+  {
+    "name": "Magistrate Elric Stone",
+    "background": "Bridge-steps judge who settles disputes under the Charter’s carvings.",
+    "personality": "Measured, tradition-bound, allergic to bribes.",
+    "currentLocation": "sb-old-bridge"
+  },
+  {
+    "name": "Sister Lysa Bell",
+    "background": "Temple clerk who tallies tithe stones and blesses travelers at the arch.",
+    "personality": "Gentle, precise, firm about honesty.",
+    "currentLocation": "sb-old-bridge"
+  },
+
+  {
+    "name": "Grell Pike",
+    "background": "Dock bosun who assigns berths and keeps a coded log of tides and skippers.",
+    "personality": "Gruff, orderly, quick to laugh after work.",
+    "currentLocation": "sb-docks"
+  },
+  {
+    "name": "Anya Netsong",
+    "background": "Fishmonger famed for knife-speed and a chorus voice at dawn auctions.",
+    "personality": "Sunny, competitive, hates waste.",
+    "currentLocation": "sb-docks"
+  },
+  {
+    "name": "Darrekk Tarcap",
+    "background": "Tar-and-rope chandler who patches hull seams for the price of a secret.",
+    "personality": "Close-mouthed, patient, stubborn as oak.",
+    "currentLocation": "sb-docks"
+  },
+
+  {
+    "name": "Captain Maud Bridgeward",
+    "background": "Watch captain posted to the Keep, commands bell signals and patrol rosters.",
+    "personality": "Stoic, fair, intolerant of laziness.",
+    "currentLocation": "sb-keep"
+  },
+  {
+    "name": "Olan Tallis",
+    "background": "Keep scribe who logs toll counts and watch rotations in flawless script.",
+    "personality": "Meticulous, anxious, secretly proud of neat ledgers.",
+    "currentLocation": "sb-keep"
+  },
+
+  {
+    "name": "Prior Henric of the Hours",
+    "background": "Temple prior who times the three daily chimes and tends a reliquary of river stones.",
+    "personality": "Serene, curious, gently probing.",
+    "currentLocation": "sb-temple"
+  },
+  {
+    "name": "Rielle Sand",
+    "background": "Footsore pilgrim on a vow-walk, trades stories for blessings.",
+    "personality": "Gracious, wistful, stubborn about vows.",
+    "currentLocation": "sb-temple"
+  },
+
+  {
+    "name": "Tamsin Weaver",
+    "background": "Guildmaster of the Weavers, arbitrates thread weights and banner commissions.",
+    "personality": "Commanding, diplomatic, counts everything twice.",
+    "currentLocation": "sb-guildhall"
+  },
+  {
+    "name": "Merrit Chandell",
+    "background": "Candle guild factor who tracks wax debts and favors dim rooms for deals.",
+    "personality": "Smooth, cautious, hates surprises.",
+    "currentLocation": "sb-guildhall"
+  },
+
+  {
+    "name": "Serjeant Wulfram",
+    "background": "Gate serjeant who inspects wheel-marks and stamps caravan seals at first light.",
+    "personality": "Brisk, suspicious, secretly loves dogs at the gate.",
+    "currentLocation": "sb-east-gate"
+  },
+  {
+    "name": "Berrit Ox",
+    "background": "Cartwright’s son testing new axle pegs on outbound wagons.",
+    "personality": "Earnest, inventive, easily flustered.",
+    "currentLocation": "sb-east-gate"
+  },
+
+  {
+    "name": "Granny Willow",
+    "background": "Warren midwife and fixer who trades bread for small kindnesses.",
+    "personality": "Wry, steel-spined, fiercely protective.",
+    "currentLocation": "sb-warren"
+  },
+  {
+    "name": "Pip Candlewick",
+    "background": "Lantern-runner who strings lights through the alleys and sells safe escorts.",
+    "personality": "Nervy, nimble, eager to please.",
+    "currentLocation": "sb-warren"
+  },
+  {
+    "name": "Kessa Threadbare",
+    "background": "Seamstress-for-hire mending cloaks on stoops, hears every whispered plan.",
+    "personality": "Dry wit, observant, generous with spare cloth.",
+    "currentLocation": "sb-warren"
+  }
+]
