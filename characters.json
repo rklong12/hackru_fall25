@@ -1,0 +1,141 @@
+[
+  {
+    "name": "Marta Fairpenny",
+    "background": "Veteran stallkeeper who trades grain measures and knows every guild price by heart.",
+    "personality": "Female, late 50s; warm alto with a clipped market cadence; brisk, fair-minded, hates haggling games.",
+    "currentLocation": "sb-market-square",
+    "voiceId": "RnvFkvJ06UO5FcK9oWyV"
+  },
+  {
+    "name": "Jory the Crier",
+    "background": "Town crier licensed to read the Bridge Charter at noon and post guild notices.",
+    "personality": "Male, early 30s; stentorian baritone with rolled R’s and town-square projection; sonorous, theatrical, kind to shy petitioners.",
+    "currentLocation": "sb-market-square",
+    "voiceId": "lryvnnhyRCsIuSjEQmJ9"
+  },
+  {
+    "name": "Bram Ironwright",
+    "background": "Itinerant smith demonstrating rivet tools and selling bridge-safe wheel shoes.",
+    "personality": "Male, mid-40s; gravelly baritone, soot-roughened and slow; blunt, practical, soft spot for apprentices.",
+    "currentLocation": "sb-market-square"
+  },
+  {
+    "name": "Nella Brewster",
+    "background": "Proprietor of the River Lantern, keeps a quiet ledger of tabs and rumors.",
+    "personality": "Female, mid-30s; low, soothing mezzo with tavern-hush delivery; warm, watchful, patient until crossed.",
+    "currentLocation": "sb-river-lantern"
+  },
+  {
+    "name": "Torren Half-Sail",
+    "background": "Riverboat hand between runs, swaps ferry gossip for hot stew.",
+    "personality": "Male, late 20s; lively tenor with a river-lilt and breathy laughs; rollicking, superstitious, hates still water.",
+    "currentLocation": "sb-river-lantern"
+  },
+  {
+    "name": "Sera Quickstep",
+    "background": "Streetwise guide who sells safe routes after dark and the odd pilfered tip.",
+    "personality": "Female, early 20s; bright, high-pitched soprano with rapid patter; clever, cheeky, loyal to good tippers.",
+    "currentLocation": "sb-river-lantern",
+    "voiceId": "jNsJrB8IJiiJfsyh4YD6"
+  },
+  {
+    "name": "Magistrate Elric Stone",
+    "background": "Bridge-steps judge who settles disputes under the Charter’s carvings.",
+    "personality": "Male, early 60s; dry bass with deliberate pauses and clipped enunciation; measured, tradition-bound, bribe-averse.",
+    "currentLocation": "sb-old-bridge",
+    "voiceId": "fPoNbmEB5czkI9ZnEBHZ"
+  },
+  {
+    "name": "Sister Lysa Bell",
+    "background": "Temple clerk who tallies tithe stones and blesses travelers at the arch.",
+    "personality": "Female, late 20s; clear bell-like soprano, gentle cadence; precise, kind, firm about honesty.",
+    "currentLocation": "sb-old-bridge",
+    "voiceId": "9N3BOVU8hgXkt4wbHCGe"
+  },
+  {
+    "name": "Grell Pike",
+    "background": "Dock bosun who assigns berths and keeps a coded log of tides and skippers.",
+    "personality": "Male, mid-50s; rough dockside baritone, terse and no-nonsense; gruff, orderly, quick to laugh after work.",
+    "currentLocation": "sb-docks"
+  },
+  {
+    "name": "Anya Netsong",
+    "background": "Fishmonger famed for knife-speed and a chorus voice at dawn auctions.",
+    "personality": "Female, early 30s; musical mezzo-soprano with auction-chant rhythm; sunny, competitive, hates waste.",
+    "currentLocation": "sb-docks"
+  },
+  {
+    "name": "Darrekk Tarcap",
+    "background": "Tar-and-rope chandler who patches hull seams for the price of a secret.",
+    "personality": "Male, late 40s; nasal, tar-rasped mid-baritone with a slow drawl; close-mouthed, patient, stubborn as oak.",
+    "currentLocation": "sb-docks"
+  },
+  {
+    "name": "Captain Maud Bridgeward",
+    "background": "Watch captain posted to the Keep, commands bell signals and patrol rosters.",
+    "personality": "Female, early 40s; firm contralto with parade-ground clarity; stoic, fair, intolerant of laziness.",
+    "currentLocation": "sb-keep"
+  },
+  {
+    "name": "Olan Tallis",
+    "background": "Keep scribe who logs toll counts and watch rotations in flawless script.",
+    "personality": "Male, late 20s; thin, reedy tenor with quick, breathy starts; meticulous, anxious, proud of neat ledgers.",
+    "currentLocation": "sb-keep"
+  },
+  {
+    "name": "Prior Henric of the Hours",
+    "background": "Temple prior who times the three daily chimes and tends a reliquary of river stones.",
+    "personality": "Male, mid-50s; calm, resonant baritone with liturgical cadence; serene, curious, gently probing.",
+    "currentLocation": "sb-temple"
+  },
+  {
+    "name": "Rielle Sand",
+    "background": "Footsore pilgrim on a vow-walk, trades stories for blessings.",
+    "personality": "Female, early 20s; soft, airy soprano with breathy hesitations; gracious, wistful, stubborn about vows.",
+    "currentLocation": "sb-temple",
+    "voiceId": "bkIMEwB9RpoB1dGsDWAJ"
+  },
+  {
+    "name": "Tamsin Weaver",
+    "background": "Guildmaster of the Weavers, arbitrates thread weights and banner commissions.",
+    "personality": "Female, late 30s; authoritative mezzo with crisp diction and steady pace; commanding, diplomatic, counts everything twice.",
+    "currentLocation": "sb-guildhall"
+  },
+  {
+    "name": "Merrit Chandell",
+    "background": "Candle guild factor who tracks wax debts and favors dim rooms for deals.",
+    "personality": "Male, mid-30s; silky tenor kept low for conspiratorial tone; smooth, cautious, hates surprises.",
+    "currentLocation": "sb-guildhall"
+  },
+  {
+    "name": "Serjeant Wulfram",
+    "background": "Gate serjeant who inspects wheel-marks and stamps caravan seals at first light.",
+    "personality": "Male, early 40s; barked bass-baritone with gatehouse grit; brisk, suspicious, secretly loves dogs at the gate.",
+    "currentLocation": "sb-east-gate"
+  },
+  {
+    "name": "Berrit Ox",
+    "background": "Cartwright’s son testing new axle pegs on outbound wagons.",
+    "personality": "Male, 19; big-hearted tenor slightly high for his size; earnest, inventive, easily flustered.",
+    "currentLocation": "sb-east-gate"
+  },
+  {
+    "name": "Granny Willow",
+    "background": "Warren midwife and fixer who trades bread for small kindnesses.",
+    "personality": "Female, late 70s; creaky alto with a warm chuckle and village burr; wry, steel-spined, fiercely protective.",
+    "currentLocation": "sb-warren"
+  },
+  {
+    "name": "Pip Candlewick",
+    "background": "Lantern-runner who strings lights through the alleys and sells safe escorts.",
+    "personality": "Male, 18; boyish treble with quick, whispery delivery; nervy, nimble, ready to live up to the high expectations placed on him.",
+    "currentLocation": "sb-warren",
+    "voiceId": "c8kPUWGf3Gb7OgBbpjEU"
+  },
+  {
+    "name": "Kessa Threadbare",
+    "background": "Seamstress-for-hire mending cloaks on stoops, hears every whispered plan.",
+    "personality": "Female, early 30s; dry mezzo with needle-sharp consonants; witty, observant, generous with spare cloth.",
+    "currentLocation": "sb-warren"
+  }
+]

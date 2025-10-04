@@ -1,0 +1,67 @@
+{
+  "history": "The riverside city of Stonebridge grew around a single ancient bridge of unknown make. For centuries it served as a toll stop between northern farms and southern ports. After a flood ruined nearby rivals, Stonebridge’s guilds seized control of trade and declared the Bridge Charter—simple laws posted on the bridge itself. The city is peaceable but proud; every dispute is judged at the bridge steps, and every caravan leaves a tithe stone.",
+  "locations": [
+    {
+      "id": "stonebridge",
+      "name": "Stonebridge",
+      "type": "city",
+      "summary": "A bustling medieval market-city clustered around an indestructible stone span over the Greywash River.",
+      "sublocations": [
+        {
+          "id": "sb-market-square",
+          "name": "Market Square",
+          "type": "market",
+          "summary": "Stalls of cloth, grain, and ironwork; town criers read the Bridge Charter at noon."
+        },
+        {
+          "id": "sb-river-lantern",
+          "name": "The River Lantern",
+          "type": "tavern",
+          "summary": "Low-beamed tavern near the bridge abutment; warm stew, louder rumors."
+        },
+        {
+          "id": "sb-old-bridge",
+          "name": "The Old Bridge",
+          "type": "bridge",
+          "summary": "Seamless stone arch bearing carved tally-marks of paid tithes."
+        },
+        {
+          "id": "sb-docks",
+          "name": "Lower Docks",
+          "type": "harbor",
+          "summary": "Barges and ferries crowd timber piers; fishmongers shout the tide’s price."
+        },
+        {
+          "id": "sb-keep",
+          "name": "Bridgeward Keep",
+          "type": "keep",
+          "summary": "Stout tower overseeing tolls and city watches; bells signal river traffic."
+        },
+        {
+          "id": "sb-temple",
+          "name": "Temple of the Three Hours",
+          "type": "temple",
+          "summary": "Clerics mark dawn, noon, and dusk with chimes; pilgrims leave river stones."
+        },
+        {
+          "id": "sb-guildhall",
+          "name": "Guildhall Row",
+          "type": "guildhall",
+          "summary": "Weavers, chandlers, and carters share a long timber hall where deals are sealed with wax."
+        },
+        {
+          "id": "sb-east-gate",
+          "name": "East Gate",
+          "type": "gate",
+          "summary": "Caravans queue beneath iron-toothed portcullis; inspectors check wheel-marks."
+        },
+        {
+          "id": "sb-warren",
+          "name": "The Warren",
+          "type": "slum",
+          "summary": "Tight alleys and leaning tenements; lanterns strung on laundry lines."
+        }
+      ]
+    }
+  ]
+}
