@@ -1,15 +1,30 @@
+# Use a lightweight Python image
 FROM python:3.11-slim
 
+# Set working directory inside the container
 WORKDIR /app
 
-COPY #add depenedencies 
+# Install system dependencies needed for HTTPS requests
+RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
 
-RUN npm install
+# Copy Python dependencies file first (caching)
+COPY requirements.txt ./
 
+# Install Python packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all app files into container
 COPY . .
 
-ENV PORT=3000
+# Create folder for cached audio (defensive)
+# RUN mkdir -p /app/audio_cache
 
-EXPOSE 9000
+# Expose port Dash will run on
+EXPOSE 8050
 
-CMD ["npm", "start"]
+# Command to run the app
+CMD ["python", "app.py"]
+
+
+# docker build -t adventure-rpg .
+# docker run --env-file .env -p 8050:8050 adventure-rpg
