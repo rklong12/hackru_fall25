@@ -55,10 +55,10 @@ def update_chat(n_clicks, user_message, history):
 
     # (Optional) Simple AI echo or bot response
 
-    response = client.models.generate_content(model="gemini-2.5-flash", contents="Explain how AI works in a few words")
+    response = client.models.generate_content(model="gemini-2.5-flash", contents=user_message)
     print(response.text)
     
-    bot_response = f"Echo: {response.text}"
+    bot_response = response.text
     history.append(("Bot", bot_response))
 
     # Format chat
