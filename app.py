@@ -35,7 +35,7 @@ app.layout = dbc.Container([
         dbc.Button("Send", id="send-button", n_clicks=0, color="primary")
     ], className="mt-3"),
 
-    html.Audio(id="audio-player", controls=False, autoPlay=True)
+    html.Audio(id="audio-player", controls=False, autoPlay=True),
     dcc.Store(id="memory", data=[])
 ], fluid=True)
 
