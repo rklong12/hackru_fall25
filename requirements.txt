@@ -4,3 +4,4 @@ flask
 dash-bootstrap-components
 google-genai
 python-dotenv
+hashlib
