@@ -16,7 +16,6 @@ import json
 from typing import Dict, List, Optional, Union
 import requests
 from dotenv import load_dotenv
-from pathlib import Path
 
 # --------------------------- Config ---------------------------
 
@@ -25,10 +24,8 @@ ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
 ELEVEN_MODEL_ID = "eleven_v3"
 BASE = "https://api.elevenlabs.io/v1"
 
-
 class ElevenError(RuntimeError):
     pass
-
 
 def _headers(json_content: bool = True) -> Dict[str, str]:
     if not ELEVEN_API_KEY:
@@ -40,6 +37,21 @@ def _headers(json_content: bool = True) -> Dict[str, str]:
 
 
 # ---------------------- ElevenLabs helpers --------------------
+def _headers_for_tts():
+    if not ELEVEN_API_KEY:
+        raise ElevenError("Missing ELEVEN_API_KEY in environment (.env).")
+    return {
+        "xi-api-key": ELEVEN_API_KEY,
+        "accept": "audio/mpeg",
+        "content-type": "application/json",
+    }
+
+def _safe_filename(s: str) -> str:
+    return "".join(c for c in s.lower().replace(" ", "-") if c.isalnum() or c in ("-", "_"))
+
+
+def _hash_for(text: str, voice_id: str) -> str:
+    return hashlib.sha256((voice_id + "||" + text).encode("utf-8")).hexdigest()[:12]
 
 def _build_design_text(name: str, personality: str, background: str) -> str:
     persona = " ".join([s for s in (personality.strip(), background.strip()) if s]).strip()
@@ -150,7 +162,7 @@ def _save_characters(path: str, characters: List[Dict]) -> None:
         json.dump(characters, f, ensure_ascii=False, indent=2)
 
 
-def _find_character(characters: List[Dict], target: Union[str, int]) -> Dict:
+def _find_character(characters: List[Dict], target: str) -> Dict:
     if isinstance(target, int):
         if target < 0 or target >= len(characters):
             raise IndexError(f"Character index out of range: {target}")
@@ -164,7 +176,7 @@ def _find_character(characters: List[Dict], target: Union[str, int]) -> Dict:
 # ----------------------- Public entrypoint --------------------
 
 def ensure_voice_id_for_character_in_file(
-    target: Union[str, int],
+    target: str,
     characters_path: str = "characters.json",
     allow_fallback: bool = False,
 ) -> str:
@@ -209,6 +221,43 @@ def ensure_voice_id_for_character_in_file(
     _save_characters(characters_path, characters)
     print(f"[tts] voiceId for '{name}': {voice_id} ({source}, design_text_len={len(design_text)})")
     return voice_id
+
+def synthesize_voice_mp3(
+    text: str,
+    character_target: str,
+    characters_path: str = "characters.json",
+    out_dir: str = "audio_cache",
+    model_id: str = "eleven_v3"  # v3 alpha
+) -> str:
+    """
+    Ensures a voice for the character, generates a random directional line,
+    and saves an MP3 using Eleven v3 alpha to audio_cache/.
+    Returns: (mp3_path, text_used)
+    """
+    voice_id = ensure_voice_id_for_character_in_file(character_target, characters_path)
+
+    #Path(out_dir).mkdir(parents=True, exist_ok=True)
+    name_part = _safe_filename(str(character_target))
+    hash_part = _hash_for(text, voice_id)
+    out_path = Path(out_dir) / f"{name_part or 'character'}-{hash_part}.mp3"
+    if out_path.exists():
+        return str(out_path), text
+
+    # 4) Call ElevenLabs TTS (v3 alpha model)
+    url = f"{BASE}/text-to-speech/{voice_id}"
+    payload = {
+        "text": text,
+        "model_id": model_id,
+        # Optionally tune voice settings if supported:
+        # "voice_settings": {"stability": 0.4, "similarity_boost": 0.75}
+    }
+
+    r = requests.post(url, headers=_headers_for_tts(), json=payload, timeout=120)
+    if r.status_code >= 400:
+        raise ElevenError(f"TTS failed: {r.status_code} {r.text}")
+
+    out_path.write_bytes(r.content)
+    return str(out_path)
 
 def synthesize_line_mp3(character_target, text, characters_path="characters.json",
                         out_dir="audio_cache", model_id="eleven_v3"):

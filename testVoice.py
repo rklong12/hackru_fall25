@@ -21,7 +21,6 @@ BASE = "https://api.elevenlabs.io/v1"
 class ElevenError(RuntimeError):
     pass
 
-
 def _headers_for_tts():
     if not ELEVEN_API_KEY:
         raise ElevenError("Missing ELEVEN_API_KEY in environment (.env).")
@@ -30,7 +29,6 @@ def _headers_for_tts():
         "accept": "audio/mpeg",
         "content-type": "application/json",
     }
-
 
 def _safe_filename(s: str) -> str:
     return "".join(c for c in s.lower().replace(" ", "-") if c.isalnum() or c in ("-", "_"))
