@@ -5,71 +5,38 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 from responseTextAudio import generate_text_and_audio
 
 # Create the app
 app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
-app.title = "Fate Weaver"
+app.title = "Local Chat"
 
 # Layout
 app.layout = dbc.Container([
-    dbc.Row([
-        # Left Column - 35% for vertically centered image
-        html.H1("Fate Weaver", className="text-center mt-3"),
-        dbc.Col([
-            html.Div(
-                html.Img(
-                    src="/assets/raw.png",
-                    style={
-                        "width": "100%",
-                        "height": "auto",
-                        "borderRadius": "10px",
-                        "display": "block"
-                    }
-                ),
-                style={
-                    "height": "100%",
-                    #"display": "flex",
-                    #"alignItems": "center",      # vertical center
-                    "justifyContent": "center"   # horizontal center
-                }
-            )
-        ], width=4, style={"minHeight": "100vh"}),
+    html.H2("MultiVoice-al RPG", className="text-center mt-3"),
 
-        # Right Column - 65% chat
-        dbc.Col([
-            html.Div([
-                dbc.Card([
-                    dbc.CardBody([
-                        html.Div(id="chat-history", style={
-                            "height": "400px",
-                            "overflowY": "auto",
-                            "backgroundColor": "#1e1e1e",
-                            "padding": "10px",
-                            "borderRadius": "10px",
-                            "whiteSpace": "pre-wrap"
-                        }),
-                    ])
-                ], className="mt-3", style={"width": "100%"}),
+    dbc.Card([
+        dbc.CardBody([
+            html.Div(id="chat-history", style={
+                "height": "400px",
+                "overflowY": "auto",
+                "backgroundColor": "#1e1e1e",
+                "padding": "10px",
+                "borderRadius": "10px",
+                "whiteSpace": "pre-wrap"
+            }),
+        ])
+    ], className="mt-3"),
 
-                dbc.InputGroup([
-                    dbc.Input(id="user-input", placeholder="Type a message...", type="text"),
-                    dbc.Button("Send", id="send-button", n_clicks=0, color="primary")
-                ], className="mt-3"),
+    dbc.InputGroup([
+        dbc.Input(id="user-input", placeholder="Type a message...", type="text"),
+        dbc.Button("Send", id="send-button", n_clicks=0, color="primary")
+    ], className="mt-3"),
 
-                html.Audio(id="audio-player", controls=False, autoPlay=True),
-                dcc.Store(id="memory", data=[])
-            ], style={
-                "display": "flex",
-                "flexDirection": "column",
-                "alignItems": "center",        # horizontal center
-                "justifyContent": "flex-start",# top align
-                "height": "100%",
-                "width": "100%"
-            })
-        ], width=8)
-    ], style={"height": "100vh"})  # full viewport height for row
+    html.Audio(id="audio-player", controls=False, autoPlay=True),
+    dcc.Store(id="memory", data=[]),
 ], fluid=True)
 
 # Callbacks
@@ -77,7 +44,6 @@ app.layout = dbc.Container([
     Output("chat-history", "children"),
     Output("memory", "data", allow_duplicate=True),
     Output("audio-player", "src"), 
-    Output("user-input", "value"),
     Input("send-button", "n_clicks"),
     State("user-input", "value"),
     State("memory", "data"),
@@ -85,21 +51,29 @@ app.layout = dbc.Container([
 )
 def update_chat(n_clicks, user_message, history):
     if not user_message:
-        return [html.Div("")], history, None, ""
+        return [html.Div(""), history]
 
     # Append user message
     history.append(("You", user_message))
 
-    # Generate bot response + audio
+    # (Optional) Simple AI echo or bot response
+
+    # response = client.models.generate_content(model="gemini-2.5-flash", contents=user_message)
+    # Generate text + audio
     result = generate_text_and_audio(user_message, history, audio_cache_dir="assets")
-    bot_response = result["text"]
-    history.append((result["speaker"], bot_response))
+    bot_response = result["display_line"]
+
+    #result["audio_path"]
+    # audio_src = result["audio_src_base64"]  # may be None on TTS error
+    print(bot_response)
+
+    history.append(("Bot", bot_response))
 
     # Format chat
     chat_display = []
     for sender, msg in history:
-        align = "left" if sender != "You" else "right"
-        color = "#5bc0de" if sender != "You" else "#f0ad4e"
+        align = "left" if sender == "Bot" else "right"
+        color = "#5bc0de" if sender == "Bot" else "#f0ad4e"
         chat_display.append(
             html.Div([
                 html.Span(f"{sender}: ", style={"color": color, "fontWeight": "bold"}),
@@ -109,9 +83,8 @@ def update_chat(n_clicks, user_message, history):
     
     audio_src = "/" + result["audio_path"].replace("\\", "/") if os.path.exists(result["audio_path"]) else None
 
-    return chat_display, history, audio_src, ""
+    return chat_display, history, audio_src
 
-# Client-side callback to play audio automatically
 app.clientside_callback(
     """
     function(src, history) {
@@ -123,11 +96,12 @@ app.clientside_callback(
         return history;
     }
     """,
-    Output("memory", "data", allow_duplicate=True),  # dummy output
+    Output("memory", "data", allow_duplicate=True),  # dummy output, memory used as placeholder
     Input("audio-player", "src"),
     State("memory", "data"),
-    prevent_initial_call=True
+    prevent_initial_call = True
 )
 
 if __name__ == "__main__":
-    app.run(port=8050, debug=True)
+    app.run(debug=True)
+
