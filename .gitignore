@@ -1,2 +1,4 @@
 .env
 textNovelVenv
+/__pycache__
+/audio_cache
