@@ -77,7 +77,7 @@ def history_as_transcript(history_slice: List[Tuple[str, str]]) -> str:
 def generate_text_and_audio(
     user_message: str,
     history: List[Tuple[str, str]],
-    audio_cache_dir: str = "audio_cache"
+    audio_cache_dir: str = "assets"
 ) -> Dict[str, Any]:
     """
     Orchestrates:
