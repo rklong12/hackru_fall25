@@ -1,5 +1,11 @@
 [
   {
+    "name": "Narrator",
+    "background": "Omniscient storyteller who frames scenes, bridges time jumps, and sets mood without interfering with player choices.",
+    "personality": "Male, mid-40s; rich baritone with neutral accent; measured, authoritative pace; warm but reserved; clear diction with subtle gravitas; avoid breathy or singsong delivery.",
+    "currentLocation": "sb-old-bridge"
+  },
+  {
     "name": "Marta Fairpenny",
     "background": "Veteran stallkeeper who trades grain measures and knows every guild price by heart.",
     "personality": "Female, late 50s; warm alto with a clipped market cadence; brisk, fair-minded, hates haggling games.",

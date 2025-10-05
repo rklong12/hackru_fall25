@@ -7,6 +7,7 @@ import os
 load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+from responseTextAudio import generate_text_and_audio
 
 # Create the app
 app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
@@ -55,10 +56,13 @@ def update_chat(n_clicks, user_message, history):
 
     # (Optional) Simple AI echo or bot response
 
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=user_message)
-    print(response.text)
-    
-    bot_response = response.text
+    # response = client.models.generate_content(model="gemini-2.5-flash", contents=user_message)
+    # Generate text + audio
+    result = generate_text_and_audio(user_message, history, audio_cache_dir="audio_cache")
+    bot_response = result["display_line"]
+    # audio_src = result["audio_src_base64"]  # may be None on TTS error
+    print(bot_response)
+
     history.append(("Bot", bot_response))
 
     # Format chat

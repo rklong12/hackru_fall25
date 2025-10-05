@@ -16,11 +16,13 @@ import json
 from typing import Dict, List, Optional, Union
 import requests
 from dotenv import load_dotenv
+from pathlib import Path
 
 # --------------------------- Config ---------------------------
 
 load_dotenv()
 ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
+ELEVEN_MODEL_ID = "eleven_v3"
 BASE = "https://api.elevenlabs.io/v1"
 
 
@@ -207,3 +209,26 @@ def ensure_voice_id_for_character_in_file(
     _save_characters(characters_path, characters)
     print(f"[tts] voiceId for '{name}': {voice_id} ({source}, design_text_len={len(design_text)})")
     return voice_id
+
+def synthesize_line_mp3(character_target, text, characters_path="characters.json",
+                        out_dir="audio_cache", model_id="eleven_v3"):
+    voice_id = ensure_voice_id_for_character_in_file(character_target, characters_path)
+    out_dir_path = Path(out_dir)
+    out_dir_path.mkdir(parents=True, exist_ok=True)
+
+    import hashlib, requests, os
+    h = hashlib.sha256((voice_id + "||" + text).encode()).hexdigest()[:12]
+    safe = "".join(c for c in str(character_target).lower().replace(" ", "-") if c.isalnum() or c in "-_")
+    out_path = out_dir_path / f"{safe}-{h}.mp3"
+    if out_path.exists():
+        return str(out_path)
+
+    headers = {"xi-api-key": os.getenv("ELEVEN_API_KEY"),
+               "accept": "audio/mpeg",
+               "content-type": "application/json"}
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+    payload = {"text": text, "model_id": model_id}
+    r = requests.post(url, headers=headers, json=payload, timeout=120)
+    r.raise_for_status()
+    out_path.write_bytes(r.content)
+    return str(out_path)
