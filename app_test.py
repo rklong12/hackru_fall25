@@ -20,7 +20,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.Div(
                 html.Img(
-                    src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
+                    src="/assets/raw.png",
                     style={
                         "width": "100%",
                         "height": "auto",
@@ -30,8 +30,8 @@ app.layout = dbc.Container([
                 ),
                 style={
                     "height": "100%",
-                    "display": "flex",
-                    "alignItems": "center",      # vertical center
+                    #"display": "flex",
+                    #"alignItems": "center",      # vertical center
                     "justifyContent": "center"   # horizontal center
                 }
             )
@@ -92,13 +92,14 @@ def update_chat(n_clicks, user_message, history):
 
     # Generate bot response + audio
     result = generate_text_and_audio(user_message, history, audio_cache_dir="assets")
-    history.append((result["speaker"], result["text"]))
+    bot_response = result["text"]
+    history.append((result["speaker"], bot_response))
 
     # Format chat
     chat_display = []
     for sender, msg in history:
         align = "left" if sender != "You" else "right"
-        color = "#5bc0de" if sender == "Bot" else "#f0ad4e"
+        color = "#5bc0de" if sender != "You" else "#f0ad4e"
         chat_display.append(
             html.Div([
                 html.Span(f"{sender}: ", style={"color": color, "fontWeight": "bold"}),
