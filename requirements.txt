@@ -2,5 +2,5 @@ dash>=2.0.0
 requests
 flask
 dash-bootstrap-components
-snowflake-connector
+google-genai
 python-dotenv
