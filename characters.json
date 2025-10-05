@@ -3,7 +3,8 @@
     "name": "Narrator",
     "background": "Omniscient storyteller who frames scenes, bridges time jumps, and sets mood without interfering with player choices.",
     "personality": "Male, mid-40s; rich baritone with neutral accent; measured, authoritative pace; warm but reserved; clear diction with subtle gravitas; avoid breathy or singsong delivery.",
-    "currentLocation": "sb-old-bridge"
+    "currentLocation": "sb-old-bridge",
+    "voiceId": "IJWRtlu1bmwzMD9iqCzC"
   },
   {
     "name": "Marta Fairpenny",
@@ -29,13 +30,15 @@
     "name": "Nella Brewster",
     "background": "Proprietor of the River Lantern, keeps a quiet ledger of tabs and rumors.",
     "personality": "Female, mid-30s; low, soothing mezzo with tavern-hush delivery; warm, watchful, patient until crossed.",
-    "currentLocation": "sb-river-lantern"
+    "currentLocation": "sb-river-lantern",
+    "voiceId": "c7A95ireKSChDmCcah76"
   },
   {
     "name": "Torren Half-Sail",
     "background": "Riverboat hand between runs, swaps ferry gossip for hot stew.",
     "personality": "Male, late 20s; lively tenor with a river-lilt and breathy laughs; rollicking, superstitious, hates still water.",
-    "currentLocation": "sb-river-lantern"
+    "currentLocation": "sb-river-lantern",
+    "voiceId": "V3Upgr35RL2hUIy5rx8a"
   },
   {
     "name": "Sera Quickstep",
@@ -68,7 +71,8 @@
     "name": "Anya Netsong",
     "background": "Fishmonger famed for knife-speed and a chorus voice at dawn auctions.",
     "personality": "Female, early 30s; musical mezzo-soprano with auction-chant rhythm; sunny, competitive, hates waste.",
-    "currentLocation": "sb-docks"
+    "currentLocation": "sb-docks",
+    "voiceId": "VZMjjfwzffbdIR1c8KQW"
   },
   {
     "name": "Darrekk Tarcap",
@@ -105,7 +109,8 @@
     "name": "Tamsin Weaver",
     "background": "Guildmaster of the Weavers, arbitrates thread weights and banner commissions.",
     "personality": "Female, late 30s; authoritative mezzo with crisp diction and steady pace; commanding, diplomatic, counts everything twice.",
-    "currentLocation": "sb-guildhall"
+    "currentLocation": "sb-guildhall",
+    "voiceId": "t10T6ELSeBvCvtdiXDrd"
   },
   {
     "name": "Merrit Chandell",

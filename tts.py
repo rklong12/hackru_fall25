@@ -16,6 +16,7 @@ import json
 from typing import Dict, List, Optional, Union
 import requests
 from dotenv import load_dotenv
+from pathlib import Path
 
 # --------------------------- Config ---------------------------
 
@@ -226,7 +227,7 @@ def synthesize_voice_mp3(
     text: str,
     character_target: str,
     characters_path: str = "characters.json",
-    out_dir: str = "audio_cache",
+    out_dir: str = "assets",
     model_id: str = "eleven_v3"  # v3 alpha
 ) -> str:
     """
@@ -260,7 +261,7 @@ def synthesize_voice_mp3(
     return str(out_path)
 
 def synthesize_line_mp3(character_target, text, characters_path="characters.json",
-                        out_dir="audio_cache", model_id="eleven_v3"):
+                        out_dir="assets", model_id="eleven_v3"):
     voice_id = ensure_voice_id_for_character_in_file(character_target, characters_path)
     out_dir_path = Path(out_dir)
     out_dir_path.mkdir(parents=True, exist_ok=True)

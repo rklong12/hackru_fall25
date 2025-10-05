@@ -1,30 +1,31 @@
 # Use a lightweight Python image
 FROM python:3.11-slim
 
-# Set working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies needed for HTTPS requests
-RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+# Install system dependencies (ffmpeg for pydub)
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
-# Copy Python dependencies file first (caching)
-COPY requirements.txt ./
+# Copy requirement files first to leverage Docker caching
+COPY requirements.txt .
 
-# Install Python packages
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all app files into container
+# Copy the rest of your app
 COPY . .
 
-# Create folder for cached audio (defensive)
-# RUN mkdir -p /app/audio_cache
-
-# Expose port Dash will run on
+# Expose port Dash runs on
 EXPOSE 8050
 
-# Command to run the app
+# Set environment variables (these can be overridden at runtime)
+ENV PORT=8050
+ENV HOST=0.0.0.0
+
+# Run the Dash app
 CMD ["python", "app.py"]
 
 
-# docker build -t adventure-rpg .
-# docker run --env-file .env -p 8050:8050 adventure-rpg
+# docker build -t multivoice-rpg .
+# docker run -p 8050:8050 --env-file .env multivoice-rpg

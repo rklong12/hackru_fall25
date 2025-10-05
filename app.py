@@ -15,7 +15,7 @@ app.title = "Local Chat"
 
 # Layout
 app.layout = dbc.Container([
-    html.H2("💬 Local Chat", className="text-center mt-3"),
+    html.H2("MultiVoice-al RPG", className="text-center mt-3"),
 
     dbc.Card([
         dbc.CardBody([
@@ -36,13 +36,14 @@ app.layout = dbc.Container([
     ], className="mt-3"),
 
     html.Audio(id="audio-player", controls=False, autoPlay=True),
-    dcc.Store(id="memory", data=[])
+    dcc.Store(id="memory", data=[]),
 ], fluid=True)
 
 # Callbacks
 @app.callback(
     Output("chat-history", "children"),
-    Output("memory", "data"),
+    Output("memory", "data", allow_duplicate=True),
+    Output("audio-player", "src"), 
     Input("send-button", "n_clicks"),
     State("user-input", "value"),
     State("memory", "data"),
@@ -59,8 +60,10 @@ def update_chat(n_clicks, user_message, history):
 
     # response = client.models.generate_content(model="gemini-2.5-flash", contents=user_message)
     # Generate text + audio
-    result = generate_text_and_audio(user_message, history, audio_cache_dir="audio_cache")
+    result = generate_text_and_audio(user_message, history, audio_cache_dir="assets")
     bot_response = result["display_line"]
+
+    #result["audio_path"]
     # audio_src = result["audio_src_base64"]  # may be None on TTS error
     print(bot_response)
 
@@ -77,8 +80,28 @@ def update_chat(n_clicks, user_message, history):
                 html.Span(msg)
             ], style={"textAlign": align, "margin": "4px"})
         )
+    
+    audio_src = "/" + result["audio_path"].replace("\\", "/") if os.path.exists(result["audio_path"]) else None
 
-    return chat_display, history
+    return chat_display, history, audio_src
+
+app.clientside_callback(
+    """
+    function(src, history) {
+        if(src){
+            var audio = document.getElementById('audio-player');
+            audio.load();
+            audio.play();
+        }
+        return history;
+    }
+    """,
+    Output("memory", "data", allow_duplicate=True),  # dummy output, memory used as placeholder
+    Input("audio-player", "src"),
+    State("memory", "data"),
+    prevent_initial_call = True
+)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8050, debug=True)
+
